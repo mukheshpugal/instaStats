@@ -3,10 +3,10 @@ def getCreds():
 	import os
 	import json
 
-	CREDENTIALS_PATH = os.path.dirname(__file__) + '\\credentials.json'
+	CREDENTIALS_PATH = os.path.dirname(__file__) + '\\..\\credentials.json'
 
 	if os.path.exists(CREDENTIALS_PATH):
-		if input('Load saved credentials? [Y/n]') in ('Y', 'y', '', 'yes'):
+		if input('Load saved credentials? [Y/n] ') in ('Y', 'y', '', 'yes'):
 			with open(CREDENTIALS_PATH) as json_file: 
 				credentials = json.load(json_file)
 	if 'credentials' not in locals():

@@ -1,22 +1,25 @@
 from selenium import webdriver
-import time
-from creds import getCreds
+import json
 
-credentials = getCreds()
+from modules.creds import getCreds
+from modules.login import login
+from modules.get_users import getUsers
 
-drv = webdriver.Chrome()
-drv.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
-drv.implicitly_wait(3)
+if __name__ == '__main__':
 
-# Login
-drv.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[2]/div/label/input').send_keys(credentials['username'])
-drv.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/div/label/input').send_keys(credentials['password'])
-drv.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[4]/button').click()
+	credentials = getCreds()
+	driver = webdriver.Chrome()
 
-# Don't save login
-drv.find_element_by_xpath('//*[@id="react-root"]/section/main/div/div/div/div/button').click()
+	login(driver, credentials)
+	driver.get('https://www.instagram.com/' + credentials['username'])
 
-# Turn off notifications
-drv.find_element_by_xpath('/html/body/div[4]/div/div/div/div[3]/button[2]').click()
+	followers, varId = getUsers(driver, 'followers')
+	following, _ = getUsers(driver, 'following', varId)
 
-drv.get('https://www.instagram.com/' + uname)
+	infoDict = {}
+
+	for person in followers + following:
+		infoDict[person[0]] = person[1:]
+
+	with open('info.json', 'w') as fp: 
+		json.dump(infoDict, fp)
