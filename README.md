@@ -1,4 +1,4 @@
-# unfollowers
+# Insta Stats
 Get instagram follower statistics. Based on selenium web scrapper.
 
 ## Setup
