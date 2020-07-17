@@ -31,3 +31,4 @@ def login(driver, credentials):
 
 	print("Logged in successfully.")
 	return driver
+	

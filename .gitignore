@@ -1,4 +1,6 @@
 __pycache__/
-credentials.json
+files/
 *.json
+*.js
 debug.log
+mps/

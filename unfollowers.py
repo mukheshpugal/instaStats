@@ -16,10 +16,10 @@ if __name__ == '__main__':
 	followers, varId = getUsers(driver, 'followers')
 	following, _ = getUsers(driver, 'following', varId)
 
-	infoDict = {}
+	# infoDict = {}
 
-	for person in followers + following:
-		infoDict[person[0]] = person[1:]
+	# for person in followers + following:
+	# 	infoDict[person[0]] = person[1:]
 
-	with open('info.json', 'w') as fp: 
-		json.dump(infoDict, fp)
+	# with open('info.json', 'w') as fp: 
+	# 	json.dump(infoDict, fp)

@@ -3,7 +3,7 @@ def getCreds():
 	import os
 	import json
 
-	CREDENTIALS_PATH = os.path.dirname(__file__) + '\\..\\credentials.json'
+	CREDENTIALS_PATH = os.path.dirname(__file__) + '\\..\\files\\credentials.json'
 
 	if os.path.exists(CREDENTIALS_PATH):
 		if input('Load saved credentials? [Y/n] ') in ('Y', 'y', '', 'yes'):
@@ -19,3 +19,4 @@ def getCreds():
 			    json.dump(credentials, fp)
 
 	return credentials
+	
