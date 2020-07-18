@@ -13,6 +13,8 @@ if __name__ == '__main__':
 	driver = webdriver.Chrome()
 
 	login(driver, credentials)
+	
+	credentials['username'] = driver.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[3]/div/div[5]/span/img').get_attribute('alt').split("'")[0]
 	driver.get('https://www.instagram.com/' + credentials['username'])
 
 	followers, varId = getUsers(driver, 'followers')
