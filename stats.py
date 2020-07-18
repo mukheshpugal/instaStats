@@ -1,4 +1,5 @@
 from selenium import webdriver
+import webbrowser
 import json
 import os
 
@@ -58,3 +59,4 @@ if __name__ == '__main__':
 		writeList(listname)
 
 	driver.quit()
+	webbrowser.open('stats.html')

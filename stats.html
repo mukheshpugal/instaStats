@@ -81,7 +81,10 @@
 			border: 1px solid #ccc;
 			border-top: none;
 		}
-		img {
+		div {
+			border-bottom: 1px solid rgba(0, 0, 0, 0);
+		}
+		a img {
 			border-radius: 50%;
 			border: 2px solid rgba(0, 0, 0, 0.1);
 			float: left;
@@ -95,7 +98,11 @@
 		<button class="tablinks" id="unfollowersbutton" onclick="openTab(event, 'unfollowers')">Recent unfollowers</button>
 		<button class="tablinks" id="theyFollowbutton" onclick="openTab(event, 'theyFollow')">You don't follow back</button>
 	</div>
-	<div id="init" class="tabcontent"><p>Hello</p></div>
+	<div id="init" class="tabcontent" style="flex-direction: column">
+		<img src="./assets/stats.png">
+		<H3 style="margin-top: -10px"> By <a href="https://github.com/mukheshpugal/" style="font-weight:600" target="__blank">mukheshpugal</a></H3>
+		<p>Loading...</p>
+	</div>
 	<div id="youFollow" class="tabcontent"><ul></ul></div>
 	<div id="unfollowers" class="tabcontent"><ul></ul></div>
 	<div id="theyFollow" class="tabcontent"><ul></ul></div>
@@ -121,11 +128,8 @@
 			document.getElementById(name + "button").innerHTML += " (" + list.length + ")";
 		}
 		getList(youFollow, "youFollow");
-		alert('1');
 		getList(unfollowers, "unfollowers");
-		alert('2');
 		getList(theyFollow, "theyFollow");
-		alert('3');
 	</script>
 	<script type="text/javascript">
 		function openTab(evt, tabName) {
@@ -142,5 +146,6 @@
 			evt.currentTarget.className += " active";
 		}
 	</script>
+	<script type="text/javascript">document.getElementById("init").children[2].innerHTML = "Click on the tabs to access data"</script>
 </body>
 </html>
