@@ -2,6 +2,10 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import ElementClickInterceptedException
 
+def finish(driver):
+	driver.quit()
+	exit()
+
 def login(driver, credentials):
 	print("Loading page...")
 	driver.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
@@ -16,7 +20,7 @@ def login(driver, credentials):
 		driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[4]/button').click()
 	except ElementClickInterceptedException:
 		print("Wrong password")
-		finish()
+		finish(driver)
 
 	# Don't save login
 	try:
@@ -24,7 +28,7 @@ def login(driver, credentials):
 	except NoSuchElementException:
 		if driver.current_url == 'https://www.instagram.com/accounts/login/?source=auth_switcher':
 			print("Wrong password")
-			finish()
+			finish(driver)
 
 	
 	driver.find_element_by_xpath('/html/body/div[4]/div/div/div/div[3]/button[2]').click()
