@@ -6,3 +6,5 @@
 2. Install necessary packages with `pip install -r requirements.txt`
 3. Run `python stats.py`
 4. Access data throught `stats.html`
+
+> Note: Run `stats.py` atleast once before opening `stats.html`
