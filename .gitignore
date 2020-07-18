@@ -1,6 +1,3 @@
 __pycache__/
 files/
-*.json
-*.js
 debug.log
-mps/
