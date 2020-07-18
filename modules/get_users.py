@@ -24,13 +24,16 @@ def getUsers(driver, userType, varId=None):
 
 	edge = 'edge_followed_by' if userType == 'followers' else 'edge_follow'
 
+	done = 0
 	while True:
 		url = grapgql + f'&variables={json.dumps(variables)}'
 		driver.get(url)
 
 		data = json.loads(driver.find_element_by_xpath('/html/body/table/tbody/tr/td[2]').text)["data"]
 		nodes = data['user'][edge]['edges']
+		done += len(nodes)
 		followlist += [(node['node']['username'], node['node']['full_name'], node['node']['profile_pic_url']) for node in nodes]
+		print(f'Loaded: {done} {userType}')
 		page_info = data['user'][edge]['page_info']
 		if not page_info['has_next_page']: break
 		variables['after'] = page_info['end_cursor']
