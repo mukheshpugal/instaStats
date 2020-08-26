@@ -10,7 +10,9 @@ from modules.get_users import getUsers
 if __name__ == '__main__':
 
 	credentials = getCreds()
-	driver = webdriver.Chrome()
+	options = webdriver.ChromeOptions()
+	options.add_argument('headless')
+	driver = webdriver.Chrome(options=options)
 
 	login(driver, credentials)
 	

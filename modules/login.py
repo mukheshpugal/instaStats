@@ -13,11 +13,11 @@ def login(driver, credentials):
 
 	# Login
 	print("Logging in...")
-	driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[2]/div/label/input').send_keys(credentials['username'])
-	driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/div/label/input').send_keys(credentials['password'])
+	driver.find_element_by_xpath("//span[.='Phone number, username, or email']/../input").send_keys(credentials['username'])
+	driver.find_element_by_xpath("//span[.='Password']/../input").send_keys(credentials['password'])
 
 	try:
-		driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[4]/button').click()
+		driver.find_element_by_xpath("//span[.='Password']/../../../../div[3]/button").click()
 	except ElementClickInterceptedException:
 		print("Wrong password")
 		finish(driver)
@@ -30,8 +30,10 @@ def login(driver, credentials):
 			print("Wrong password")
 			finish(driver)
 
-	
-	driver.find_element_by_xpath('/html/body/div[4]/div/div/div/div[3]/button[2]').click()
+	try:
+		driver.find_element_by_xpath('/html/body/div[4]/dcciv/div/div/div[3]/button[2]').click()
+	except Exception:
+		pass
 
 	print("Logged in successfully.")
 	return driver
